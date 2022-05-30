@@ -10,9 +10,22 @@ import java.util.List;
 public class PermutationsTest {
 
     @Test
-    public void TestCase1() {
+    public void TestCase1_Permutations() {
         List<Integer> input = new ArrayList<>(Arrays.asList(1, 2, 3));
         List<List<Integer>> perms = Permutations.getPermutations(input);
+        Assertions.assertTrue(perms.size() == 6);
+        Assertions.assertTrue(contains(perms, new ArrayList<>(Arrays.asList(1, 2, 3))));
+        Assertions.assertTrue(contains(perms, new ArrayList<>(Arrays.asList(1, 3, 2))));
+        Assertions.assertTrue(contains(perms, new ArrayList<>(Arrays.asList(2, 1, 3))));
+        Assertions.assertTrue(contains(perms, new ArrayList<>(Arrays.asList(2, 3, 1))));
+        Assertions.assertTrue(contains(perms, new ArrayList<>(Arrays.asList(3, 1, 2))));
+        Assertions.assertTrue(contains(perms, new ArrayList<>(Arrays.asList(3, 2, 1))));
+    }
+
+    @Test
+    public void TestCase2_PermutationsWithArraySwap() {
+        List<Integer> input = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List<List<Integer>> perms = PermutationsWithArraySwap.getPermutations(input);
         Assertions.assertTrue(perms.size() == 6);
         Assertions.assertTrue(contains(perms, new ArrayList<>(Arrays.asList(1, 2, 3))));
         Assertions.assertTrue(contains(perms, new ArrayList<>(Arrays.asList(1, 3, 2))));

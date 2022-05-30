@@ -1,3 +1,8 @@
+/*
+    Create all the possible permutations of the given input array -
+    [1,2,3] = [123],[132],[213],[231],[312],[321]
+ */
+
 package com.rohit.learnings.Java.Algorithms.Recursion;
 
 import java.util.ArrayList;
