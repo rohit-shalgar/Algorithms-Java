@@ -25,6 +25,22 @@ public class PowerSetTest {
         Assertions.assertThat(contains(powerSets, new int[]{1, 2, 3})).isTrue();
     }
 
+
+    @Test
+    public void testCase2_PowerSetRecursive() {
+        List<Integer> inputArray = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List<List<Integer>> powerSets = PowerSet.getPowerSetsRecursive(inputArray);
+        Assertions.assertThat(powerSets.size()).isEqualTo(8);
+        Assertions.assertThat(contains(powerSets, new int[]{})).isTrue();
+        Assertions.assertThat(contains(powerSets, new int[]{1})).isTrue();
+        Assertions.assertThat(contains(powerSets, new int[]{2})).isTrue();
+        Assertions.assertThat(contains(powerSets, new int[]{1, 2})).isTrue();
+        Assertions.assertThat(contains(powerSets, new int[]{3})).isTrue();
+        Assertions.assertThat(contains(powerSets, new int[]{1, 3})).isTrue();
+        Assertions.assertThat(contains(powerSets, new int[]{2, 3})).isTrue();
+        Assertions.assertThat(contains(powerSets, new int[]{1, 2, 3})).isTrue();
+    }
+
     private boolean contains(List<List<Integer>> powerSets, int[] testDataArray) {
 
         for (List<Integer> subArray : powerSets) {

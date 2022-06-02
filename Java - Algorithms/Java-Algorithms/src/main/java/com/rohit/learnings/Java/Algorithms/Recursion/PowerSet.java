@@ -27,4 +27,26 @@ public class PowerSet {
         return powerSets;
     }
 
+    public static List<List<Integer>> getPowerSetsRecursive(List<Integer> input) {
+        return getPowerSetsRecursiveHelper(input, input.size() - 1);
+    }
+
+    private static List<List<Integer>> getPowerSetsRecursiveHelper(List<Integer> input, int index) {
+        if (index < 0) {
+            List<List<Integer>> powerSets = new ArrayList<>();
+            List<Integer> emptyPowerSet = new ArrayList<>();
+            powerSets.add(emptyPowerSet);
+            return powerSets;
+        }
+        int currentElement = input.get(index);
+        List<List<Integer>> powerSets = getPowerSetsRecursiveHelper(input, index - 1);
+        int powerSetsLength = powerSets.size();
+        for (int i = 0; i < powerSetsLength; i++) {
+            List<Integer> powerSet = new ArrayList<>(powerSets.get(i));
+            powerSet.add(currentElement);
+            powerSets.add(powerSet);
+        }
+        return powerSets;
+    }
+
 }
