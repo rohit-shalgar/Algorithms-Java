@@ -11,17 +11,13 @@ import java.util.List;
 
 public class PowerSet {
 
-    public static List<List<Integer>> getPowerSetsIterative(List<Integer> input){
+    public static List<List<Integer>> getPowerSetsIterative(List<Integer> input) {
         List<List<Integer>> powerSets = new ArrayList<>();
         List<Integer> emptyPowerSet = new ArrayList<>();
         powerSets.add(emptyPowerSet);
-        return getPowerSetsHelper(powerSets,input);
-    }
-
-    private static List<List<Integer>> getPowerSetsHelper(List<List<Integer>> powerSets, List<Integer> input) {
-        for(Integer number:input){
+        for (Integer number : input) {
             int existingPowerSetsLength = powerSets.size();
-            for(int i= 0; i < existingPowerSetsLength; i++){
+            for (int i = 0; i < existingPowerSetsLength; i++) {
                 List<Integer> existingPowerSet = new ArrayList<>(powerSets.get(i));
                 existingPowerSet.add(number);
                 powerSets.add(existingPowerSet);
@@ -30,4 +26,5 @@ public class PowerSet {
         }
         return powerSets;
     }
+
 }
