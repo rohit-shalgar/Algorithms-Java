@@ -7,6 +7,7 @@
 
 package com.rohit.learnings.Java.Algorithms.Recursion;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,4 +62,41 @@ public class StairCase {
         return noOfStepsRequiredForEachHeightStore.get(height);
     }
 
+    public int noOfWaysToTopDP(int height, int maxSteps){
+        int[] noOfWays = new int[height+1];
+        noOfWays[0] = 1;
+        noOfWays[1] = 1;
+        return calculateNumberOfWaysFromHeightTwo(height, maxSteps, noOfWays);
+    }
+
+    private int calculateNumberOfWaysFromHeightTwo(int height, int maxSteps, int[] noOfWays) {
+        for(int startingHeight = 2; startingHeight <= height; startingHeight++){
+            int step = 1;
+            while(step <= maxSteps && step <= startingHeight){
+                noOfWays[startingHeight] = noOfWays[startingHeight] + noOfWays[startingHeight - step];
+                step += 1;
+            }
+        }
+        return  noOfWays[height];
+    }
+
+    public int noOfWaysToStairCaseSlidingWindow(){
+        int currentNumberOfWays = 0;
+        ArrayList<Integer> calculatedWays = new ArrayList<>();
+        calculatedWays.add(1);
+        calculateNumberOfWaysForEachHeight(currentNumberOfWays, calculatedWays);
+        return calculatedWays.get(height);
+    }
+
+    private void calculateNumberOfWaysForEachHeight(int currentNumberOfWays, ArrayList<Integer> calculatedWays) {
+        for(int currentHeight=1; currentHeight<= height; currentHeight++){
+            int startOfTheWindow = currentHeight - maxSteps - 1;
+            int endOfTheWindow = currentHeight - 1;
+            if( startOfTheWindow >= 0){
+                currentNumberOfWays -= calculatedWays.get(startOfTheWindow);
+            }
+            currentNumberOfWays += calculatedWays.get(endOfTheWindow);
+            calculatedWays.add(currentNumberOfWays);
+        }
+    }
 }
