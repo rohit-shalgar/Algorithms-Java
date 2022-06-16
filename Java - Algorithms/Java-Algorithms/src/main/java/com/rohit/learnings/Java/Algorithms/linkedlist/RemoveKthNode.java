@@ -1,19 +1,29 @@
 package com.rohit.learnings.Java.Algorithms.linkedlist;
 
+import java.util.Objects;
+
 public class RemoveKthNode {
 
-    public static LinkedList removeNode(LinkedList linkedList, int k) {
-        LinkedList traverse = linkedList;
-        LinkedList nextNode = linkedList;
-        int linkedListLength = getLinkedListSize(traverse);
-        if (headNeedsToBeShifted(linkedListLength, linkedList, k)) {
-            return linkedList;
-        }
-        removeKthNode(linkedListLength, nextNode, k);
-        return linkedList;
+    private final LinkedList firstLinkedList;
+    private final LinkedList secondLinkedList;
+    private final LinkedList headToBeReturned;
+
+    public RemoveKthNode(LinkedList linkedList) {
+        firstLinkedList = linkedList;
+        secondLinkedList = linkedList;
+        headToBeReturned = linkedList;
     }
 
-    private static int getLinkedListSize(LinkedList traverse) {
+    public LinkedList removeNode(int kthNode) {
+        int linkedListLength = getLinkedListSize(firstLinkedList);
+        if (headNeedsToBeShifted(linkedListLength, headToBeReturned, kthNode)) {
+            return headToBeReturned;
+        }
+        removeKthNode(linkedListLength, secondLinkedList, kthNode);
+        return headToBeReturned;
+    }
+
+    private int getLinkedListSize(LinkedList traverse) {
         int counter = 0;
         while (traverse != null) {
             counter++;
@@ -22,8 +32,7 @@ public class RemoveKthNode {
         return counter;
     }
 
-
-    private static boolean headNeedsToBeShifted(int linkedListLength, LinkedList linkedList, int k) {
+    private boolean headNeedsToBeShifted(int linkedListLength, LinkedList linkedList, int k) {
         if (linkedListLength == k) {
             linkedList.value = linkedList.next.value;
             linkedList.next = linkedList.next.next;
@@ -32,7 +41,7 @@ public class RemoveKthNode {
         return false;
     }
 
-    private static void removeKthNode(int linkedListLength, LinkedList nextNode, int k) {
+    private void removeKthNode(int linkedListLength, LinkedList nextNode, int k) {
         linkedListLength = linkedListLength - k - 1;
         while (linkedListLength > 0) {
             linkedListLength--;
@@ -40,5 +49,40 @@ public class RemoveKthNode {
         }
         nextNode.next = nextNode.next.next;
     }
+
+    public LinkedList removeNodeTwoPointers(int kthNode) {
+        int counter = 1;
+        iterateTillKthNode(counter, kthNode, secondLinkedList);
+        if (headNeedsToBeShifted(secondLinkedList, headToBeReturned)) {
+            return headToBeReturned;
+        }
+        removeKthNode(secondLinkedList, headToBeReturned);
+        return headToBeReturned;
+    }
+
+    private void iterateTillKthNode(int counter, int k, LinkedList secondPointer) {
+        while (counter <= k) {
+            secondPointer = secondPointer.next;
+            counter++;
+        }
+    }
+
+    private boolean headNeedsToBeShifted(LinkedList secondPointer, LinkedList linkedList) {
+        if (Objects.isNull(secondPointer)) {
+            linkedList.value = linkedList.next.value;
+            linkedList.next = linkedList.next.next;
+            return true;
+        }
+        return false;
+    }
+
+    private void removeKthNode(LinkedList secondPointer, LinkedList firstPointer) {
+        while (secondPointer.next != null) {
+            firstPointer = firstPointer.next;
+            secondPointer = secondPointer.next;
+        }
+        firstPointer.next = firstPointer.next.next;
+    }
+
 
 }
