@@ -1,5 +1,12 @@
 package com.rohit.learnings.Java.Algorithms.linkedlist;
 
+
+import java.util.Objects;
+import java.util.function.Predicate;
+
+/*
+    Brute force
+ */
 public class SumOfLinkedLists {
     private static String total = "";
 
@@ -39,5 +46,42 @@ public class SumOfLinkedLists {
         return total.charAt(i) - '0';
     }
 
+    static class SumOfLinkedListOptimized {
+
+        private final static LinkedList dummy = new LinkedList(0);
+        private static LinkedList current = dummy;
+
+        static Predicate<LinkedList> nodePredicate = Objects::nonNull;
+
+        public static LinkedList sum(LinkedList linkedList1, LinkedList linkedList2) {
+            LinkedList node1 = linkedList1;
+            LinkedList node2 = linkedList2;
+            int carry = 0;
+            while (nodePredicate.test(node1) || nodePredicate.test(node2)) {
+                int value1 = 0, value2 = 0;
+                if (nodePredicate.test(node1)) {
+                    value1 = node1.value;
+                    node1 = node1.next;
+                }
+                if (nodePredicate.test(node2)) {
+                    value2 = node2.value;
+                    node2 = node2.next;
+                }
+                int sumOfValues = value1 + value2 + carry;
+                setNextNode(sumOfValues);
+                carry = sumOfValues / 10;
+
+            }
+            return dummy.next;
+        }
+
+
+        private static void setNextNode(int sumOfValues) {
+            int nodeValue = sumOfValues % 10;
+            current.next = new LinkedList(nodeValue);
+            current = current.next;
+        }
+
+    }
 
 }
