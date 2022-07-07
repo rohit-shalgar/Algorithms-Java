@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Objects;
 
 public class SumOfLinkedListTest {
 
@@ -34,7 +35,7 @@ public class SumOfLinkedListTest {
 
         Assertions.assertThat(SinglyLinkedListUtilities.getNodeValuesFromLinkedList(outputLinkedList)).
                 isEqualTo(SinglyLinkedListUtilities.getNodeValuesFromLinkedList(expectedLinkedList));
-
+        
     }
 
 }

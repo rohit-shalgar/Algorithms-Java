@@ -46,6 +46,9 @@ public class SumOfLinkedLists {
         return total.charAt(i) - '0';
     }
 
+    /*
+        Optimized.
+     */
     static class SumOfLinkedListOptimized {
 
         private final static LinkedList dummy = new LinkedList(0);
