@@ -52,4 +52,28 @@ public class GenerateDocumentTest {
 
         Assertions.assertThat(actual).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void testcase5_negativeScenario2_characterIsNotThereBF() {
+        final String characters = "a";
+        final String documentToBeGenerated = "A";
+        final boolean expectedResult = false;
+        final boolean actual = GenerateDocument.documentCanBeGeneratedBF(
+                characters, documentToBeGenerated
+        );
+
+        Assertions.assertThat(actual).isEqualTo(expectedResult);
+    }
+
+    @Test
+    public void testcase5_negativeScenario2_characterIsNotThereOptimized() {
+        final String characters = "a";
+        final String documentToBeGenerated = "A";
+        final boolean expectedResult = false;
+        final boolean actual = GenerateDocument.documentCanBeGeneratedOptimized(
+                characters, documentToBeGenerated
+        );
+
+        Assertions.assertThat(actual).isEqualTo(expectedResult);
+    }
 }
