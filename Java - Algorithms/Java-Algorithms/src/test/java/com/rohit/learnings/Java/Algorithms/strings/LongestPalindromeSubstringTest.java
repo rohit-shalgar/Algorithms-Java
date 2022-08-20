@@ -14,6 +14,14 @@ public class LongestPalindromeSubstringTest {
     }
 
     @Test
+    public void testcase1_getLongestPalindromeSubstringOpt() {
+        String expected = "xyzzyx";
+        String input = "abaxyzzyxf";
+        String actual = LongestPalindromeSubstring.getLongestPalindromeOpt(input);
+        Assertions.assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
     public void testcase2_noPalindromeExists() {
         String expected = "";
         String input = "ab";
