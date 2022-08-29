@@ -23,6 +23,34 @@ public class Sorting {
         return input;
     }
 
+    public static int[] insertionSort(int[] input) {
+        if (input.length == 0) return new int[0];
+        for (int i = 1; i < input.length; i++) {
+            while (i > 0 && input[i] < input[i - 1]) {
+                swap(input, i, i - 1);
+                i--;
+            }
+        }
+        return input;
+    }
+
+    public static int[] selectionSort(int[] array) {
+        if (array.length == 0) return new int[0];
+        int smallest = Integer.MAX_VALUE;
+        for (int i = 0; i < array.length - 1; i++) {
+            int current = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < array[current]) {
+                    current = j;
+                }
+            }
+            if (current < smallest) {
+                swap(array, current, i);
+            }
+        }
+        return array;
+    }
+
     private static void swap(int[] input, int i, int j) {
         int temp = input[i];
         input[i] = input[j];
