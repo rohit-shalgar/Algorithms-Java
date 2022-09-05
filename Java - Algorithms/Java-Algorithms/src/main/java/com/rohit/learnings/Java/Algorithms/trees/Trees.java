@@ -27,4 +27,17 @@ public class Trees {
         }
         return closest;
     }
+
+    public static int findClosestValueInBstItr(BST tree, int target) {
+        BST currentTreeNode = tree;
+        while (currentTreeNode != null) {
+            if (Math.abs(currentTreeNode.value - target) < Math.abs(closest - target)) {
+                closest = currentTreeNode.value;
+            }
+            if (target < currentTreeNode.value) currentTreeNode = currentTreeNode.left;
+            else if (target > currentTreeNode.value) currentTreeNode = currentTreeNode.right;
+            else return currentTreeNode.value;
+        }
+        return closest;
+    }
 }

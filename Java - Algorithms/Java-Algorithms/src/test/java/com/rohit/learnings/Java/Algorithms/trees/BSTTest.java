@@ -18,7 +18,10 @@ public class BSTTest {
         root.right.right = new Trees.BST(22);
 
         var expected = 13;
-        var actual = Trees.findClosestValueInBst(root, 12);
-        Assertions.assertThat(actual).isEqualTo(expected);
+        var actual1 = Trees.findClosestValueInBst(root, 12);
+        Assertions.assertThat(actual1).isEqualTo(expected);
+
+        var actual2 = Trees.findClosestValueInBstItr(root, 12);
+        Assertions.assertThat(actual2).isEqualTo(expected);
     }
 }
