@@ -27,9 +27,6 @@ public class Programs {
             return inputArray;
         }
 
-        private void depthFirstSearchHelper(Node child, List<String> inputArray) {
-
-        }
     }
 
 
