@@ -1,8 +1,12 @@
 package com.rohit.learnings.Java.Algorithms.trees;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Trees {
 
     static int closest = Integer.MAX_VALUE;
+
 
     public static class BST {
         public int value;
@@ -40,4 +44,37 @@ public class Trees {
         }
         return closest;
     }
+
+    public static class BinaryTree {
+        int value;
+        BinaryTree left;
+        BinaryTree right;
+
+        public BinaryTree(int value) {
+            this.value = value;
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+    public static List<Integer> branchSums(BinaryTree tree) {
+        List<Integer> branchSums = new ArrayList<>();
+        calculateBranchSums(tree, 0, branchSums);
+        return branchSums;
+    }
+
+    private static void calculateBranchSums(BinaryTree tree, int sum, List<Integer> branchSums) {
+        if (tree == null) {
+            return;
+        }
+        int newRunningSum = sum + tree.value;
+        if (tree.left == null && tree.right == null) {
+            branchSums.add(newRunningSum);
+            return;
+        }
+        calculateBranchSums(tree.left, newRunningSum, branchSums);
+        calculateBranchSums(tree.right, newRunningSum, branchSums);
+
+    }
+
 }

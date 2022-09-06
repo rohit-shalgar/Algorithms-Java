@@ -31,7 +31,7 @@ public class DFSTest {
     private boolean compare(List<String> depthFirstSearch, String[] expected) {
         if (depthFirstSearch.size() != expected.length) return false;
         for (int i = 0; i < expected.length; i++) {
-            if (expected[i] != depthFirstSearch.get(i)) return false;
+            if (!expected[i].equals(depthFirstSearch.get(i))) return false;
         }
         return true;
     }
