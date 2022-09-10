@@ -14,4 +14,14 @@ public class SmallDiffTest {
         );
         Assertions.assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void testCase2() {
+        int[] expected = {28, 26};
+        int[] actual = SmallestDifference.smallestDifferenceOpt(
+                new int[]{-1, 5, 10, 20, 28, 3},
+                new int[]{26, 134, 135, 15, 17}
+        );
+        Assertions.assertThat(actual).isEqualTo(expected);
+    }
 }
