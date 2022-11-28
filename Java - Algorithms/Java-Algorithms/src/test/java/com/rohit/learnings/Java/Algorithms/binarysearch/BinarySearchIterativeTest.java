@@ -1,4 +1,4 @@
-package com.rohit.learnings.Java.Algorithms;
+package com.rohit.learnings.Java.Algorithms.binarysearch;
 
 import com.rohit.learnings.Java.Algorithms.binarysearch.BinarySearchIterative;
 import org.assertj.core.api.Assertions;
