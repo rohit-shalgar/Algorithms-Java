@@ -50,5 +50,36 @@ public class MinHeightBST {
             constructBSTHelper(array, rootIdx + 1, endIdx, bst);
             return bst;
         }
+
+        public static BST minHeightBstOpt(List<Integer> array) {
+            return constructBSTHelperOpt(array, 0, array.size() - 1, null);
+        }
+
+        private static BST constructBSTHelperOpt(
+                List<Integer> array,
+                int startIdx,
+                int endIdx,
+                BST bst
+        ) {
+            if (startIdx > endIdx) return bst;
+            int rootIdx = (startIdx + endIdx) / 2;
+            int currentBSTValue = array.get(rootIdx);
+            BST newBSTNode = new BST(currentBSTValue);
+            if (bst == null) bst = newBSTNode;
+            else {
+                if (currentBSTValue < bst.value) {
+                    bst.left = newBSTNode;
+                    bst = bst.left;
+
+                } else {
+                    bst.right = newBSTNode;
+                    bst = bst.right;
+                }
+            }
+            constructBSTHelperOpt(array, startIdx, rootIdx - 1, bst);
+            constructBSTHelperOpt(array, rootIdx + 1, endIdx, bst);
+            return bst;
+        }
     }
 }
+
