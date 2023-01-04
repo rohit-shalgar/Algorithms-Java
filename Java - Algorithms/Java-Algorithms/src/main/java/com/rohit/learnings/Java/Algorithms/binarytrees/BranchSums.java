@@ -1,4 +1,4 @@
-package com.rohit.learnings.Java.Algorithms.binarysearch;
+package com.rohit.learnings.Java.Algorithms.binarytrees;
 
 import java.util.ArrayList;
 import java.util.List;
