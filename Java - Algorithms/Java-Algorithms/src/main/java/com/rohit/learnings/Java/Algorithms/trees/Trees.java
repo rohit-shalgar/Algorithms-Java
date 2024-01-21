@@ -77,4 +77,17 @@ public class Trees {
 
     }
 
+    public static int nodeDepth(BinaryTree root) {
+        return calculateNodeDepth(root, 0);
+    }
+
+    private static int calculateNodeDepth(BinaryTree root, int depth) {
+        if (root == null) {
+            return depth;
+        }
+        return depth + calculateNodeDepth(root.left, depth + 1) +
+                calculateNodeDepth(root.right, depth + 1);
+
+    }
+
 }

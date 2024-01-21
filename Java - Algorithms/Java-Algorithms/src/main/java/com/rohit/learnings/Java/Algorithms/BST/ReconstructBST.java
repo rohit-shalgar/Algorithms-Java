@@ -35,7 +35,7 @@ public class ReconstructBST {
                 currentTree = currentTree.right;
             }
         }
-        constructBSTHelper(currentTree, preOrderTraversalValues, currentNodeIndex++);
-        return currentTree;
+        return constructBSTHelper(currentTree, preOrderTraversalValues, currentNodeIndex++);
+
     }
 }

@@ -1,4 +1,4 @@
-package com.rohit.learnings.Java.Algorithms.linkedlist.doublylinkedlist;
+/*package com.rohit.learnings.Java.Algorithms.linkedlist.doublylinkedlist;
 
 public class DoublyLinkedList {
 
@@ -97,3 +97,4 @@ public class DoublyLinkedList {
         return node != null;
     }
 }
+*/

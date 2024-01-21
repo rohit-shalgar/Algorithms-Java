@@ -1,8 +1,5 @@
 package com.rohit.learnings.Java.Algorithms.arrays;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class LongestPeak {
     public static int longestPeak(int[] array) {
         int longestPeakLength = 0;
