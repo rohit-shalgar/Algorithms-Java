@@ -16,13 +16,17 @@ public class SortedSquaredArrayTest {
         //data #2
         input = new int[]{-50, -13, -2, -1, 0, 0, 1, 1, 2, 3, 19, 20};
         expected = new int[]{0,0,1,1,1,4,4,9,169,361,400,2500};
-        checkIfActualMatchesInput(new SortedSquaredArray(),input,expected);
+        checkIfActualMatchesInput(actual,input,expected);
     }
 
     private void checkIfActualMatchesInput(SortedSquaredArray sortedSquaredArray, int[] input, int[] expected) {
         var actual = sortedSquaredArray.sortedSquaredArrayBrute(input);
         for (int i = 0; i < expected.length; i++) {
             Assertions.assertTrue(expected[i] == actual[i]);
+        }
+        var actualOpt = sortedSquaredArray.sortedSquaredArrayOpt(input);
+        for (int i = 0; i < expected.length; i++) {
+            Assertions.assertTrue(expected[i] == actualOpt[i]);
         }
     }
 
