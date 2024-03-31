@@ -1,0 +1,21 @@
+
+
+main -> feature -> commit A then B then C
+ meanwhile main has commit d and then E
+
+
+GIT merge -> pulls all the changes into feature and creates a new commit
+              like tie-ing the two branches of a tree together
+
+    rebase - > puts the feature branch commits after main commits,
+                feature branches changes are moved on the tip of main after e comes A
+
+
+- merge can create messy commits and commit history is squashed
+    rebase is a much cleaner way
+
+
+GIT squash - all feature branches commits are squashed together keeping mains commit history linear
+(lose details of feature commits)
+
+squash and merge
