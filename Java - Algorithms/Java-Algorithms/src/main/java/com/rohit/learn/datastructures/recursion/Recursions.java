@@ -1,8 +1,29 @@
 package com.rohit.learn.datastructures.recursion;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Recursions {
+
+    public static int productSum(List<Object> array) {
+        return productSumHelper(array, 1);
+    }
+
+    private static int productSumHelper(List<Object> array, int depth) {
+        int sum = 0;
+        for (Object o : array) {
+            if (o instanceof ArrayList) {
+                ArrayList<Object> internalArray = (ArrayList<Object>) o;
+                sum += productSumHelper(internalArray, depth + 1);
+            } else {
+                sum += (int) o;
+            }
+        }
+        return sum * depth;
+    }
+
     public static int fibonacciSeries(int n) {
         if (n == 1) return 0;
         if (n == 2) return 1;
