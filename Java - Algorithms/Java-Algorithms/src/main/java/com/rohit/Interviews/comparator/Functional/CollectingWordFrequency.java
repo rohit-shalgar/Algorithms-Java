@@ -11,10 +11,12 @@ public class CollectingWordFrequency {
 
         String str = "orem Ipsum is simply \n" +
                 "    Ipsum Lorem not simply Ipsum";
+
         return Stream.of(str)
-                .map(s -> s.split(("\\s+")))
+                .map(s -> s.split("\\s+"))
                 .flatMap(Arrays::stream)
                 .collect(Collectors.toMap(String::toString, s -> 1, Integer::sum));
+
     }
 
     public static void main(String[] args) {

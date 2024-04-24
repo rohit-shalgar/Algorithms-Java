@@ -50,4 +50,25 @@ public class Recursions {
         }
         return n > 1 ? lastTwo[1] : lastTwo[0];
     }
+
+    public static List<List<Integer>> powerSet(List<Integer> array) {
+        return powerSetHelper(array, array.size() - 1);
+    }
+
+    private static List<List<Integer>> powerSetHelper(List<Integer> array, int index) {
+        if (index < 0) {
+            List<List<Integer>> subsets = new ArrayList<>();
+            subsets.add(new ArrayList<>());
+            return subsets;
+        }
+        int element = array.get(index);
+        List<List<Integer>> powerSets = powerSetHelper(array, index - 1);
+        int length = powerSets.size();
+        for (int i = 0; i < length; i++) {
+            List<Integer> current = new ArrayList<>(powerSets.get(i));
+            current.add(element);
+            powerSets.add(current);
+        }
+        return powerSets;
+    }
 }

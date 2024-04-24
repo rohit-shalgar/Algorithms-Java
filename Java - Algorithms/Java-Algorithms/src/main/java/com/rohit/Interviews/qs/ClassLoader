@@ -1,0 +1,101 @@
+In Java, a class loader is a crucial component of the Java Runtime Environment (JRE)
+responsible for loading Java classes into memory at runtime.
+ Class loaders play a fundamental role in Java's dynamic class loading and linking mechanism,
+ which enables applications to load classes dynamically as needed rather than at compile time.
+
+
+ @RequestMapping(value = "/hello", method = RequestMethod.GET)
+
+ User user = new User.Builder()
+                 .username("john_doe")
+                 .email("john@example.com")
+                 .age(30)
+                 .address("123 Main St, City")
+                 .build();
+
+
+ public class User {
+     private final String username;
+     private final String email;
+     private final int age;
+     private final String address;
+
+     // Private constructor to enforce object creation through the builder
+     private User(String username, String email, int age, String address) {
+         this.username = username;
+         this.email = email;
+         this.age = age;
+         this.address = address;
+     }
+
+     // Getter methods for fields (optional)
+     public String getUsername() {
+         return username;
+     }
+
+     public String getEmail() {
+         return email;
+     }
+
+     public int getAge() {
+         return age;
+     }
+
+     public String getAddress() {
+         return address;
+     }
+
+     // Inner static Builder class
+     public static class Builder {
+         private String username;
+         private String email;
+         private int age;
+         private String address;
+
+         // Setter methods for optional parameters
+         public Builder username(String username) {
+             this.username = username;
+             return this;
+         }
+
+         public Builder email(String email) {
+             this.email = email;
+             return this;
+         }
+
+         public Builder age(int age) {
+             this.age = age;
+             return this;
+         }
+
+         public Builder address(String address) {
+             this.address = address;
+             return this;
+         }
+
+         // Build method to create User object
+         public User build() {
+             // Validate required fields (e.g., username) if necessary
+             // Optional: Add validation logic here
+
+             // Create and return the User object
+             return new User(username, email, age, address);
+         }
+     }
+ }
+
+
+nJava applications, you can work with JSON (JavaScript Object Notation)
+using libraries that provide support for JSON parsing, serialization, and deserialization.
+JSON has become a popular format for data interchange due to its simplicity and ease of use.
+Here's how you can use JSON in Java applications using a commonly used library like Jackson.
+
+Using Jackson Library for JSON Processing
+Jackson is a popular JSON library for Java that provides powerful features for working with JSON data. You can use Jackson to convert Java objects to JSON (serialization) and JSON to Java objects (deserialization). Here's how you can use Jackson in your Java application
+
+We use Jackson's ObjectMapper to serialize a Java object (User) into a JSON string (writeValueAsString method)
+and deserialize a JSON string back into a Java object (User class) (readValue method).
+
+
+Swagger simplifies the process of API development by promoting a standard,
+language-agnostic interface to describe the functionality of an API.

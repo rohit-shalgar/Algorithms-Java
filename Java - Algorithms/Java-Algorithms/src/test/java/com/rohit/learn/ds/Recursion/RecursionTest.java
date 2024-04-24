@@ -36,4 +36,19 @@ public class RecursionTest {
         var actual = Recursions.productSum(input);
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void powerSetTest() {
+        var input = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List<List<Integer>> output = Recursions.powerSet(input);
+        Assertions.assertEquals(8, output.size());
+        Assertions.assertTrue(output.contains(new ArrayList<>()));
+        Assertions.assertTrue(output.contains(new ArrayList<>(Arrays.asList(1))));
+        Assertions.assertTrue(output.contains(new ArrayList<>(Arrays.asList(2))));
+        Assertions.assertTrue(output.contains(new ArrayList<>(Arrays.asList(3))));
+        Assertions.assertTrue(output.contains(new ArrayList<>(Arrays.asList(1,2))));
+        Assertions.assertTrue(output.contains(new ArrayList<>(Arrays.asList(1,3))));
+        Assertions.assertTrue(output.contains(new ArrayList<>(Arrays.asList(2,3))));
+        Assertions.assertTrue(output.contains(new ArrayList<>(Arrays.asList(1,2,3))));
+    }
 }

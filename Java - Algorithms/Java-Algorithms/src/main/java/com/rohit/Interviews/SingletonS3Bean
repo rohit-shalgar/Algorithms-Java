@@ -1,0 +1,50 @@
+package com.rohit.Interviews;
+
+
+//@Configuration
+public class SingletonS3Bean {
+
+    private Environment environment;
+
+    //@Bean
+    public AmazonS3 amazonS3Client(){
+
+    }
+}
+
+@Service
+autowire this S3
+and Call upload file.
+
+
+inside tf resource
+resource "aws_ecs_task_definition" "my_task_definition" {
+  family                   = "my-task-family"
+  container_definitions    = jsonencode([
+    {
+      name      = "my-container-name"
+      image     = "your-container-image-url"
+      cpu       = 256
+      memory    = 512
+      essential = true
+      environment = [
+        {
+          name  = "AWS_REGION"
+          value = var.aws_region
+        },
+        {
+          name  = "S3_BUCKET_NAME"
+          value = var.s3_bucket_name
+        },
+        # Additional environment variables
+        for key, value in var.additional_env_vars :
+        {
+          name  = key
+          value = value
+        }
+      ]
+    }
+  ])
+
+  # Other task definition configurations
+}

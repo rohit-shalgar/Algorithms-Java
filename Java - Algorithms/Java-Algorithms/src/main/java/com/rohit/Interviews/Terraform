@@ -1,0 +1,12 @@
+Module - collection of resources and configurations that are related to each other
+
+module
+    -main.tf
+    -variables.tf
+    -data.tf
+makes the configuration modular and reusable
+
+Provider -
+    -eg AWS,Azure,K8+
+    - component responsible for managing resource lifecycle and interacting
+        with specific APIs and resources

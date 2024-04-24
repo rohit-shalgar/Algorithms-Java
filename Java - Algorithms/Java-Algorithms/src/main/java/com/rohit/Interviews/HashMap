@@ -1,0 +1,44 @@
+Data Structure: HashMap uses a hash table data structure to store key-value pairs.
+
+Null Keys and Values: HashMap allows one null key and multiple null values.
+
+Performance: The average time complexity for basic operations (get, put, remove) is O(1) under normal circumstances (assuming a good hash function and properly distributed hash codes).
+
+Key Features:
+Hashing and Buckets:
+
+Each key-value pair is stored in an internal array called a bucket.
+The bucket index is determined by hashing the key using the hashCode() method of the key object.
+If multiple keys hash to the same index (collision),
+ they are stored in the same bucket using a linked list
+(or tree in Java 8+ for performance improvements).
+
+Collision Handling:
+
+When two or more keys produce the same hash code (and hence the same bucket index),
+ a collision occurs.
+In HashMap, collisions are typically resolved using a technique called chaining:
+Each bucket contains a linked list (or in Java 8+ versions, a tree) of key-value pairs.
+When a collision happens,
+the new key-value pair is added to the existing linked list at that bucket.
+
+
+Differences Summary:
+Ordering:
+
+HashMap: Does not maintain order.
+LinkedHashMap: Maintains insertion order.
+TreeMap: Maintains sorted order based on keys.
+Underlying Data Structure:
+
+HashMap and LinkedHashMap: Use hash tables.
+TreeMap: Uses a red-black tree.
+Performance:
+
+HashMap and LinkedHashMap: O(1) average-case time complexity for basic operations.
+TreeMap: O(log n) time complexity for basic operations due to the tree structure.
+Iterating Order:
+
+HashMap: Iteration order is not specified.
+LinkedHashMap: Iteration order is insertion order.
+TreeMap: Iteration order is sorted order based on keys.

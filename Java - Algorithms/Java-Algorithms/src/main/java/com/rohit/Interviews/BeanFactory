@@ -1,0 +1,35 @@
+
+In Spring Framework, @Configuration and @Bean are annotations used to define and configure beans within the Spring application context. They play a crucial role in enabling Java-based configuration instead of traditional XML configuration, offering a more concise and type-safe approach to defining beans and their dependencies. Let's explore @Configuration and @Bean in detail:
+
+@Configuration Annotation
+The @Configuration annotation is used to indicate that a class declares one or more @Bean methods and may be processed by the Spring container to generate bean definitions and manage dependencies. When Spring encounters a class annotated with @Configuration, it treats it as a source of bean definitions.
+
+Key points about @Configuration:
+
+Purpose: Marks a class as a source of bean definitions for the Spring container.
+Usage: Applied at the class level to enable Java-based configuration in Spring.
+Replacement for XML: Allows configuring Spring beans without using XML-based configuration.
+Supports Component Scanning: @Configuration classes are typically picked up during component scanning.
+Example of @Configuration class:
+
+java
+Copy code
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public MyBean myBean() {
+        return new MyBean(); // Factory method to create and configure MyBean
+    }
+
+    // Other @Bean methods can be defined here
+}
+@Bean Annotation
+The @Bean annotation is used to declare a method as a bean producer method within a @Configuration class. The annotated method creates, configures, and returns a new bean instance that will be managed by the Spring container.
+
+Key points about @Bean:
+
+Purpose: Declares a method as a bean producer within a @Configuration class.
+Method Signature: Annotated method must return an object (the bean instance) that will be managed by Spring.
+Optional Name: The method name becomes the bean name by default unless explicitly specified using the name attribute of @Bean.
+Dependency Injection: Dependencies of the bean can be injected into the method parameters.

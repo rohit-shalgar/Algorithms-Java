@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.stream.Collectors;
 
 public class ComparatorTest {
 
@@ -18,6 +19,7 @@ public class ComparatorTest {
         Players[] players = new Players[]{player1, player2, player3};
         System.out.println(players[0]);
         //Arrays.sort(players, checkerObj);
+        Arrays.stream(players).collect(Collectors.toMap(p-> p.score,player-> player));
         Comparator<Players> comparator = (Players p1, Players p2) ->
                 Comparator.comparing((Players player) -> player.score)
                         .reversed()
