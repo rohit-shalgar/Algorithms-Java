@@ -1,0 +1,11 @@
+ @Test
+  public void TestCase1() {
+    var array = new int[] {1, 0, 0, -1, -1, 0, 1, 1};
+    var order = new int[] {0, 1, -1};
+    var expected = new int[] {0, 0, 0, 1, 1, 1, -1, -1};
+    var actual = new Program().threeNumberSort(array, order);
+    Utils.assertTrue(expected.length == actual.length);
+    for (int i = 0; i < expected.length; i++) {
+      Utils.assertTrue(expected[i] == actual[i]);
+    }
+  }
