@@ -1,5 +1,6 @@
 package com.rohit.twoTwentyFour.sorting;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Programs {
@@ -79,5 +80,35 @@ public class Programs {
             }
         }
         return array;
+    }
+
+    public static int[] mergeSort(int[] array) {
+        if(array.length == 1)return array;
+        int middle = array.length/2;
+        int[] left = Arrays.copyOfRange(array,0,middle);
+        int[] right = Arrays.copyOfRange(array,middle,array.length);
+        return mergedSortedArrays(mergeSort(left),mergeSort(right));
+    }
+
+    public static int[] mergedSortedArrays(int[] left, int []right){
+        int[] sortedArray = new int[left.length + right.length];
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while(i < left.length && j < right.length){
+            if(left[i] <= right[j]){
+                sortedArray[k++] = left[i++];
+            }
+            else{
+                sortedArray[k++] = right[j++];
+            }
+        }
+        while(i < left.length){
+            sortedArray[k++] = left[i++];
+        }
+        while(j < right.length){
+            sortedArray[k++] = right[j++];
+        }
+        return sortedArray;
     }
 }
